@@ -18,7 +18,6 @@
         function runGame() {
             let guess = "";
             let correct = false;
-            let length = COLORS_ARRAY.length;
             const targetIndex = Math.floor(Math.random() * COLORS_ARRAY.length);
             const target = COLORS_ARRAY[targetIndex];
             console.log(target);
@@ -27,12 +26,14 @@
                 guess = prompt("I am thinking of these colors:\n\n" 
                 + COLORS_ARRAY.join(', ')
                 + "\n\n What color am I thinking of?") 
-                if (guess===null) {
+                if (guess === null) {
                     alert("You must enter a color.");
                     return;
                 } 
                 correct = checkGuess(guess, target);
             } while (!correct);
+
+                document.body.style.background = guess;
 
                 alert("Congratulations! You guessed correctly!");
 
@@ -49,6 +50,7 @@
                 alert ("That guess is too low alphabetically.");
             } else {
                 correct = true;
+                console.log(correct, guess);
             }
 
             return correct;
