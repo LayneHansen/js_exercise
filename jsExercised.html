@@ -24,34 +24,33 @@
             console.log(target);
 
             do {
-                let guess = prompt("I am thinking of these colors:\n\n" 
-                + COLORS_ARRAY
-                + "\n\n What color am I thinking of?")  
-            } while (guess == !correct)
-            if (guess===null) {
-                alert("You must enter a color.");
-                return;
-            } else if (guess != target) {
-                alert("Sorry, that is not correct.");
-                return;
-            } else {
-                checkGuess(guess, target);
-            }
-            alert("Congratulations! You guessed correctly!");
+                guess = prompt("I am thinking of these colors:\n\n" 
+                + COLORS_ARRAY.join(', ')
+                + "\n\n What color am I thinking of?") 
+                if (guess===null) {
+                    alert("You must enter a color.");
+                    return;
+                } 
+                correct = checkGuess(guess, target);
+            } while (!correct);
+
+                alert("Congratulations! You guessed correctly!");
+
         } 
         
         function checkGuess(guess, target) {
             let correct = false;
             
-            if (guess != COLORS_ARRAY.includes()) {
+            if (!COLORS_ARRAY.includes(guess)) {
                 alert("Sorry, that is not an option.");
             } else if (guess > target) {
-                alert("That guess is too high.");
+                alert("That guess is too high alphabetically.");
             } else if (guess < target) {
-                alert ("That guess is too low.");
+                alert ("That guess is too low alphabetically.");
             } else {
                 correct = true;
             }
+
             return correct;
         } 
 
